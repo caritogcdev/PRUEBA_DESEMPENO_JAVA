@@ -1,0 +1,77 @@
+use bamyl8a7zut2pzeotwm1;
+
+CREATE TABLE empresa (
+id INT AUTO_INCREMENT PRIMARY KEY,
+nombre VARCHAR(255) NOT NULL,
+sector VARCHAR(255) NOT NULL,
+ubicacion VARCHAR(255) NOT NULL,
+contacto VARCHAR(255) NOT NULL,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE coder (
+id INT AUTO_INCREMENT PRIMARY KEY,
+nombre VARCHAR(255) NOT NULL,
+apellidos VARCHAR(255) NOT NULL,
+documento VARCHAR(255) UNIQUE NOT NULL,
+cohorte INT NOT NULL,
+cv TEXT NOT NULL,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE vacante (
+id INT AUTO_INCREMENT PRIMARY KEY,
+empresa_id INT,
+titulo VARCHAR(255) NOT NULL,
+descripcion TEXT,
+duracion VARCHAR(255) NOT NULL,
+estado VARCHAR(50) NOT NULL CHECK(estado IN("ACTIVO","INACTIVO")),
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+CONSTRAINT fk_id_empresa FOREIGN KEY (empresa_id) REFERENCES empresa (id) ON DELETE CASCADE
+);
+
+ALTER TABLE vacante
+ADD COLUMN tecnologia VARCHAR(255) NOT NULL,
+ADD COLUMN clan VARCHAR(255) NOT NULL;
+
+
+CREATE TABLE contratacion (
+id INT AUTO_INCREMENT PRIMARY KEY,
+vacante_id INT,
+coder_id INT,
+fecha_aplicacion DATE,
+estado VARCHAR(255) NOT NULL CHECK(estado IN("ACTIVO","INACTIVO")),
+salario DECIMAL(10,2),
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+CONSTRAINT fk_id_vacante FOREIGN KEY (vacante_id) REFERENCES vacante (id) ON DELETE CASCADE,
+CONSTRAINT fk_id_coder FOREIGN KEY (coder_id) REFERENCES coder (id) ON DELETE CASCADE
+);
+
+SELECT * FROM coder;
+
+SELECT * FROM vacante;
+
+SELECT * FROM vacante
+INNER JOIN empresa ON empresa.id = vacante.empresa_id;
+
+#SELECT * FROM coder WHERE cv LIKE tecnologia;
+
+INSERT INTO empresa (nombre, sector, ubicacion, contacto)
+VALUES ("Globant", "Tecnológico", "Calle 12 sur - El poblado, Medellín", "Martha Ochoa"),
+("Softech", "Tecnológico", "Cra 54 nro 20 - Medellín", "Daniel Arboleda"),
+("Softserve", "Tecnológico", "Cra 27 sur - Envigago", "Diana Osorno"),
+("Perficient", "Tecnológico", "Transversal 8 sur - Envigado", "Paula Castañeda"),
+("Bancolombia", "Bancario", "Calle 15 - Medellín", "Martha Piedrahíta"),
+("Davivienda", "Bancario", "Calle 100 - Bogotá", "Pedro Beltrán"),
+("Platzi", "Educativo", "Calle 10 - El poblado, Medellín", "Luz Marina Gutiérrez"),
+("I.U. Pascual Bravo", "Educativo", "Carrera 14 NRO 77 - Medellín", "Andres Velásquez"),
+("Gorilla Logic", "Tecnológico", "Calle 61", "Carolina Ortiz"),
+("Banco de occidente", "Bancario", "Calle 16 nro 17 - Bucaramanga", "Kevin Mejía")
+;
+
+SELECT * FROM empresa;
+
+
+SELECT * FROM contratacion
+INNER JOIN vacante ON vacante.id = contratacion.vacante_id
+INNER JOIN coder ON coder.id = contratacion.coder_id;
