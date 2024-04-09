@@ -43,7 +43,7 @@ public class ContratacionController {
                 opcionesCoders[0]
         );
 
-        instanceModel().insert(new Cita(fechaCita, horaCita, motivo, pacienteSeleccionado.getId(), medicoSeleccionado.getId(), pacienteSeleccionado, medicoSeleccionado));
+
     }
 
     // Método para instanciar el modelo de cita
