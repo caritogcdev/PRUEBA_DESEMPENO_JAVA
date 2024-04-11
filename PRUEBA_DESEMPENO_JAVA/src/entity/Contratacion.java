@@ -102,13 +102,12 @@ public class Contratacion {
 
     @Override
     public String toString() {
-        return "Contratacion{" +
-                "fechaAplicacion='" + fechaAplicacion + '\'' +
-                ", estado='" + estado + '\'' +
-                ", salario=" + salario +
-                ", created_at='" + created_at + '\'' +
-                ", objVacante=" + objVacante +
-                ", objCoder=" + objCoder +
-                '}';
+        return "Contratacion:" +
+                "fechaAplicacion:'" + fechaAplicacion + '\'' +
+                ", estado:'" + estado + '\'' +
+                ", salario:" + salario +
+                ", created_at:'" + created_at + '\'' +
+                ", objVacante:" + objVacante +
+                ", objCoder:" + objCoder;
     }
 }

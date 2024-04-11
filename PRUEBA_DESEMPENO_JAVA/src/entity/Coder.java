@@ -78,12 +78,10 @@ public class Coder {
 
     @Override
     public String toString() {
-        return "Coder{" +
-                "nombre='" + nombre + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                ", documento='" + documento + '\'' +
-                ", cohorte=" + cohorte +
-                ", cv='" + cv + '\'' +
-                '}';
+        return "Coder: " +
+                 nombre + apellidos + '\'' +
+                ", documento:'" + documento + '\'' +
+                ", cohorte:" + cohorte +
+                ", cv:'" + cv + '\'';
     }
 }

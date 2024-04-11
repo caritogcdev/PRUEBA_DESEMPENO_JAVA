@@ -68,11 +68,10 @@ public class Empresa {
 
     @Override
     public String toString() {
-        return "Empresa{" +
-                "nombre='" + nombre + '\'' +
-                ", sector='" + sector + '\'' +
-                ", ubicacion='" + ubicacion + '\'' +
-                ", contacto='" + contacto + '\'' +
-                '}';
+        return "Empresa:" +
+                ", nombre:'" + nombre + '\'' +
+                ", sector:'" + sector + '\'' +
+                ", ubicacion:'" + ubicacion + '\'' +
+                ", contacto:'" + contacto + '\'';
     }
 }

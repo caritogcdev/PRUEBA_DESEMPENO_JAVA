@@ -113,14 +113,13 @@ public class Vacante {
 
     @Override
     public String toString() {
-        return "Vacante{" +
-                "titulo='" + titulo + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", duracion='" + duracion + '\'' +
-                ", estado='" + estado + '\'' +
-                ", tecnologia='" + tecnologia + '\'' +
-                ", clan='" + clan + '\'' +
-                ", objEmpresa=" + objEmpresa +
-                '}';
+        return "Vacante:" +
+                "titulo:'" + titulo + '\'' +
+                ", descripcion:'" + descripcion + '\'' +
+                ", duracion:'" + duracion + '\'' +
+                ", estado:'" + estado + '\'' +
+                ", tecnologia:'" + tecnologia + '\'' +
+                ", clan:'" + clan + '\'' +
+                ", objEmpresa:" + objEmpresa;
     }
 }
