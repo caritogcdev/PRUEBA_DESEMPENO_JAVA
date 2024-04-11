@@ -198,7 +198,6 @@ public class CoderModel implements CRUD {
 
     // Método para buscar coder por clan ---> PREGUNTAR ¿CÓMO TRAIGO EL CLAN SI VIENE DE OTRA TABLA (TABLA vacante)?
 
-    //where cv like y la tecnologia que quiero buscar en el cv
     public List<Coder> findByClan(String clan) {
 
         //Creamos la lista
@@ -207,14 +206,13 @@ public class CoderModel implements CRUD {
         //1. Abrimos la conexión
         Connection objConnection  = ConfigDB.openConnection();
 
-        //2. Crear el coder que vamos a retornar por el nombre aca no va
+        //2. Crear el coder que vamos a retornar por el clan
         Coder objCoderByClan = null;
 
         try {
             // 3. Sentencia sql para seleccionar al coder por el clan
-            // con el like hacemos que lo incluya
 
-            String sql = "SELECT * FROM coder WHERE clan LIKE ?;";
+            String sql = "SELECT * FROM coder WHERE clan = ?;";
 
             // 4. Preparamos el statement por buenas prácticas
             //Preparamos la consulta sql que se le realizará a la DB
@@ -242,8 +240,7 @@ public class CoderModel implements CRUD {
             }
 
         } catch (Exception error){
-            JOptionPane.showMessageDialog(null, "Hola desde el catch" + error.getMessage());
-
+            JOptionPane.showMessageDialog(null, "ERROR >>>" + error.getMessage());
         }
 
         // 7. Cerramos la conexión
@@ -254,7 +251,7 @@ public class CoderModel implements CRUD {
     }
 
     // Método para buscar coder por tecnologia ---> PREGUNTAR ¿CÓMO TRAIGO LA TECNOLOGIA SI VIENE DE OTRA TABLA (TABLA vacante)?
-
+    //where cv like y la tecnologia que quiero buscar en el cv
     public List<Coder> findByTechnology(String tecnologia){
         //Creamos la lista
         List<Coder> listCoder = new ArrayList<>();
@@ -267,9 +264,8 @@ public class CoderModel implements CRUD {
 
         try {
             // 3. Sentencia sql para seleccionar al coder por el clan
-            // con el like hacemos que lo incluya
 
-            String sql = "SELECT * FROM coder WHERE tecnologia LIKE ?;";
+            String sql = "SELECT * FROM coder WHERE cv = ?;";
 
             // 4. Preparamos el statement por buenas prácticas
             //Preparamos la consulta sql que se le realizará a la DB
@@ -297,8 +293,7 @@ public class CoderModel implements CRUD {
             }
 
         } catch (Exception error){
-            JOptionPane.showMessageDialog(null, "Hola desde el catch" + error.getMessage());
-
+            JOptionPane.showMessageDialog(null, "ERROR >>>" + error.getMessage());
         }
 
         // 7. Cerramos la conexión
